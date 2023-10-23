@@ -24,6 +24,14 @@ python -m nyc_taxi_zones_df_job \
     --project polar-storm-402611 \
     --temp_location gs://dataflow-nyc-taxi-parquet-an/tmp/
 
+python -m nyc_taxi_rate_id_df_job \
+    --region europe-west2 \
+    --input gs://dataflow-nyc-taxi-parquet-an/inputs/taxi_rate_id.csv \
+    --output gs://dataflow-nyc-taxi-parquet-an/results/taxi_rates/rates_output \
+    --runner DataflowRunner \
+    --project polar-storm-402611 \
+    --temp_location gs://dataflow-nyc-taxi-parquet-an/tmp/
+
 # populate bq table
 
 bq load \
@@ -34,4 +42,10 @@ bq load \
 bq load \
     --source_format=AVRO \
     dataflow_taxi_analysis.taxi_zone \
-    "gs://dataflow-nyc-taxi-parquet-an/results/taxi_rides/rides_output*.parquet"
+    "gs://dataflow-nyc-taxi-parquet-an/results/taxi_zones/zones_output*.avro"
+
+bq load \
+    --source_format=NEWLINE_DELIMITED_JSON \
+    dataflow_taxi_analysis.taxi_rate \
+    "gs://dataflow-nyc-taxi-parquet-an/results/taxi_rates/rates_output*.json" \
+    rate_code_id:INTEGER,rate_name:STRING

@@ -30,6 +30,7 @@ def run(argv=None):
 
     def format_result(word, count):
         return f"{word}: {count}"
+
     with beam.Pipeline(options=pipeline_options) as p:
         (p
          | ReadFromText(known_args.input)

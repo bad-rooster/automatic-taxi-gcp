@@ -1,0 +1,1 @@
+This is my first word document. With this, I hope to have word counter.

@@ -60,10 +60,10 @@ def generate_nyc_taxi_data(argv=None):
     output_name = f"{known_args.output}-{datetime_stamp}"
     with beam.Pipeline(options=pipeline_options) as p:
         (p
-         | beam.io.ReadFromParquet(known_args.input)
-         | beam.Map(rename_datetime_cols)
-         | beam.Map(formatting_col_name)
-         | beam.io.WriteToParquet(output_name, schema=taxi_schema, file_name_suffix='.parquet')
+         | "ReadParquet" >> beam.io.ReadFromParquet(known_args.input)
+         | "RenameDtmCols" >> beam.Map(rename_datetime_cols)
+         | "FormatColNames" >> beam.Map(formatting_col_name)
+         | "WriteParquet" >> beam.io.WriteToParquet(output_name, schema=taxi_schema, file_name_suffix='.parquet')
          )
 
 

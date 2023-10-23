@@ -15,3 +15,9 @@ python -m nyc_taxi_df_job \
     --runner DataflowRunner \
     --project polar-storm-402611 \
     --temp_location gs://dataflow-nyc-taxi-parquet-an/tmp/
+
+# populate bq table
+bq load \
+    --source_format=PARQUET \
+    dataflow_taxi_analysis.taxi_rides \
+    "gs://dataflow-nyc-taxi-parquet-an/results/taxi_rides*.parquet"

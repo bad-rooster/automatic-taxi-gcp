@@ -58,7 +58,7 @@ def generate_nyc_taxi_data(argv=None):
 
     datetime_stamp = datetime.now().strftime('%Y-%m-%d-%H%M%S')
     output_name = f"{known_args.output}-{datetime_stamp}"
-    with beam.Pipeline() as p:
+    with beam.Pipeline(options=pipeline_options) as p:
         (p
          | beam.io.ReadFromParquet(known_args.input)
          | beam.Map(rename_datetime_cols)

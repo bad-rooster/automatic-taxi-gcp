@@ -1,5 +1,6 @@
 # App specific
 result*
+beam-temp*
 
 # General
 .DS_Store

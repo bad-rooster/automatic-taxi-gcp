@@ -10,7 +10,8 @@ nyc_taxi_zone_avro_schema = {"namespace": "nyc_taxi_zones.avro",
                              "fields": [
                                  {"name": "location_id", "type": 'int'},
                                  {"name": 'zone', "type": 'string'},
-                                 {"name": 'borough', "type": 'string'}
+                                 {"name": 'borough', "type": 'string'},
+                                 {"name": 'state', "type": 'string'}
                              ]
                              }
 
@@ -33,6 +34,11 @@ def drop_cols(element, cols_to_be_dropped):
 
 def convert_loc_id_to_int(element):
     element["location_id"] = int(element["location_id"])
+    return element
+
+
+def enrich_state(element):
+    element["state"] = "New York"
     return element
 
 
@@ -62,6 +68,7 @@ def generate_taxi_zones_data(argv=None):
          | "ParseCols" >> beam.Map(parse_csv_dict, header_line)
          | "DropUnwantedCols" >> beam.Map(drop_cols, cols_to_be_dropped)
          | "IntConversion" >> beam.Map(convert_loc_id_to_int)
+         | "EnrichState" >> beam.Map(enrich_state)
          | "WriteAvro" >> beam.io.WriteToAvro(output_name, schema=nyc_taxi_zone_avro_schema, file_name_suffix='.avro')
          )
 

@@ -26,7 +26,7 @@ def run(argv=None):
     pipeline_options = PipelineOptions(pipeline_args)
     pipeline_options.view_as(SetupOptions).save_main_session = True
 
-    datetime_stamp = datetime.now().strftime('%y-%m-%d-%H%M%S')
+    datetime_stamp = datetime.now().strftime('%Y-%m-%d-%H%M%S')
 
     def format_result(word, count):
         return f"{word}: {count}"

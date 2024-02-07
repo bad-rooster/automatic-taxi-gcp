@@ -2,6 +2,8 @@
 
 This Python script utilizes [Apache Beam](https://beam.apache.org/) to process NYC taxi data. The script reads input data in Parquet format, performs column renaming and formatting, and then writes the processed data back to Parquet files.
 
+Please have a look at the generated report produced in Looker Studio titled `AN_Generated_Dashboard.pdf`. Feel free to reach out if you want to find out more about my methodologies and hypothesis
+
 ## Prerequisites
 
 Before running the script, ensure that you have the following installed:

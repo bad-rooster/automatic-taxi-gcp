@@ -8,7 +8,7 @@ This project uses a serverless cloud stack solution in Google Cloud Platform (GC
 - Dataflow - Apache Beam Runner
 - BigQuery
 
-Please have a look at the generated report produced in Looker Studio titled `AN_Generated_Dashboard.pdf`. Feel free to reach out if you want to find out more about my methodologies and hypothesis.
+Please have a look at the generated report produced in Looker Studio titled `AN_Generated_Dashboard.pdf`. Feel free to reach out if you want to find out more about my methodologies and hypothesis. BQ statements are truncated to hide the project.
 
 ## Point of Improvements
 

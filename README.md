@@ -2,7 +2,21 @@
 
 This Python script utilizes [Apache Beam](https://beam.apache.org/) to process NYC taxi data. The script reads input data in Parquet format, performs column renaming and formatting, and then writes the processed data back to Parquet files.
 
-Please have a look at the generated report produced in Looker Studio titled `AN_Generated_Dashboard.pdf`. Feel free to reach out if you want to find out more about my methodologies and hypothesis
+This project uses a serverless cloud stack solution in Google Cloud Platform (GCP):
+
+- Google Cloud Storage
+- Dataflow - Apache Beam Runner
+- BigQuery
+
+Please have a look at the generated report produced in Looker Studio titled `AN_Generated_Dashboard.pdf`. Feel free to reach out if you want to find out more about my methodologies and hypothesis.
+
+## Point of Improvements
+
+- CRON scheduler (Cloud Scheduler)
+- Archiving/failure path (Cloud Function)
+- Infrastructure as Code (Terraform)
+
+Otherwise the three features can be implemented in Airflow via Cloud Composer (higher cost)
 
 ## Prerequisites
 
